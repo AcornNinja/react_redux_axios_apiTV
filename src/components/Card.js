@@ -7,15 +7,10 @@ class Card extends React.Component{
         if (!this.props.serial.show.image) {
             return <div> Non picture</div>
         }
-
         const{serial}=this.props.serial;
-        console.log(this.props.serial.show.image.medium)
-
-
         return(
             <ul>
                 <li>{this.props.serial.show.name}</li>
-
                 <li>
                     <img src={this.props.serial.show.image.medium} alt="avatar"/>
                 </li>

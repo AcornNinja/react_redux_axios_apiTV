@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 
 class HomePage extends Component {
     render() {
+        //todo routing menu my //github portfolio //homepage //about app //contacts
         return (
-
-                <ul>
-                    <li>about</li>
-                    <li>contacts</li>
-                </ul>
-
+                <header>
+                    <nav>
+                        <ul className="header-menu">
+                            <li>Home</li>
+                            <li>About</li>
+                            <li>See more</li>
+                            <li>contacts</li>
+                        </ul>
+                    </nav>
+                </header>
         );
     }
 }

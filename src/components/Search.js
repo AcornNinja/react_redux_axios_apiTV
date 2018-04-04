@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './../App.css';
 
 const Search = ({ name, onChange, onSave }) => {
     return (
         <div className="container">
             <form onSubmit={onSave}>
-                <div>
                     <input
                         type="text"
-                        placeholder ="search show"
+                        placeholder = "What are we going to look for?"
                         value={name}
-                        onChange={onChange} />
-                </div>
+                        onChange={onChange}/>
+                    <button type="submit">Go</button>
             </form>
         </div>
     );

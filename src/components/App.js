@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import HomePage from './HomePage';
 import Search from './Search';
 import Card from './Card';
-//import * as nameAction from '../actions/nameAction';
 import  { loadName }  from '../actions/nameAction';
 import List from './List';
 import { bindActionCreators } from 'redux';
@@ -20,9 +19,13 @@ class App extends Component {
         this.saveSearch = this.saveSearch.bind(this);
     }
 
+
     updateSearch(e) {
         e.preventDefault();
-        let name = e.target.value;
+        let name = e.target.value.toLowerCase();
+        //TODO validator without spice
+
+        console.log( `name ${name}`);
         return this.setState({name: name});
     }
 
@@ -33,24 +36,20 @@ class App extends Component {
 
     render() {
         const {serials} = this.props;
-        let newArr = Object.keys(serials);
-        let mapArr = newArr.map( i=>{return serials[i].show.name})
-        console.log(`app js ${mapArr}`);
             return (
-            <div className="App">
+            <section>
                 <HomePage/>
                 <Search
                     name={this.state.name}
                     onChange={this.updateSearch}
-                    onSave={this.saveSearch}
-                />
-                <h3>List</h3>
+                    onSave={this.saveSearch}/>
+                <section className="gallery-wrapper">
                 {
                   Object.keys(serials)
-                      .map(key => <Card key={key} serial={serials[key]}/>)
-                  // Object.keys(serials).map((i,key)=>{return <li key={key}>{serials[i].show.name}</li> })
+                      .map(key => <List key={key} serial={serials[key]}/>)
                 }
-            </div>
+                 </section>
+            </section>
             )
     }
 }
