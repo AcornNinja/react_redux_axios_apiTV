@@ -31,11 +31,6 @@ class App extends Component {
         this.props.loadName(this.state.name);
     }
 
-    serialRow (serial, index) {
-        return (
-                <Card key={index} serial={serial} />
-        );
-    }
     render() {
         const {serials} = this.props;
         let newArr = Object.keys(serials);
@@ -51,7 +46,9 @@ class App extends Component {
                 />
                 <h3>List</h3>
                 {
-                   Object.keys(serials).map((i,key)=>{return <li key={key}>{serials[i].show.name}</li> })
+                  Object.keys(serials)
+                      .map(key => <Card key={key} serial={serials[key]}/>)
+                  // Object.keys(serials).map((i,key)=>{return <li key={key}>{serials[i].show.name}</li> })
                 }
             </div>
             )
@@ -63,10 +60,10 @@ App.propTypes = {
     name: PropTypes.string.isRequired,
 };
 
-function mapStateToProps(store) {
+function mapStateToProps(state) {
     return{
-        serials: store.serialReducer,
-        name: store.nameReducer
+        serials: state.serialReducer,
+        name: state.nameReducer
     }
 }
 function mapDispatchToProps(dispatch) {
